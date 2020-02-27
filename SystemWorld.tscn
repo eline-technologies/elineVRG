@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://system_world.gd" type="Script" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+[ext_resource path="res://GuiRayCast.gd" type="Script" id=3]
+[ext_resource path="res://floor_grid.tres" type="Material" id=4]
+[ext_resource path="res://HolographicServer.gd" type="Script" id=5]
+[ext_resource path="res://aim_point.png" type="Texture" id=6]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="ViewportTexture" id=2]
+flags = 5
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="SpatialMaterial" id=3]
+resource_local_to_scene = true
+flags_unshaded = true
+flags_albedo_tex_force_srgb = true
+params_diffuse_mode = 1
+albedo_texture = SubResource( 2 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "tool
+extends Object
+func e():
+	return 0.01
+"
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1, 1, 0.01 )
+script = SubResource( 4 )
+
+[sub_resource type="PlaneMesh" id=6]
+
+[sub_resource type="GDScript" id=7]
+script/source = "tool
+extends Object
+func e():
+	return 0
+"
+
+[node name="SystemWorld" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Viewport" type="Viewport" parent="."]
+arvr = true
+size = Vector2( 180, 180 )
+transparent_bg = true
+msaa = 4
+render_target_v_flip = true
+
+[node name="GUI" type="Control" parent="Viewport"]
+margin_right = 179.0
+margin_bottom = 162.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="Viewport/GUI"]
+margin_left = 44.0
+margin_top = 27.0
+margin_right = 121.0
+margin_bottom = 41.0
+text = "Hello world!"
+
+[node name="Button" type="Button" parent="Viewport/GUI"]
+margin_left = 18.0
+margin_top = 46.0
+margin_right = 155.0
+margin_bottom = 73.0
+text = "A button!"
+
+[node name="HSlider" type="HSlider" parent="Viewport/GUI"]
+margin_left = 14.0
+margin_top = 118.0
+margin_right = 157.0
+margin_bottom = 134.0
+ticks_on_borders = true
+
+[node name="TextEdit" type="LineEdit" parent="Viewport/GUI"]
+margin_left = 18.0
+margin_top = 87.0
+margin_right = 156.0
+margin_bottom = 111.0
+
+[node name="Area" type="Area" parent="."]
+input_capture_on_drag = true
+
+[node name="Quad" type="MeshInstance" parent="Area"]
+transform = Transform( 1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 5 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.65 )
+fov = 65.0
+near = 0.1
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -5 )
+collide_with_areas = true
+script = ExtResource( 3 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38866, 3.10891, 2.72141 )
+shadow_enabled = true
+omni_range = 4096.0
+omni_shadow_mode = 0
+
+[node name="3D_background" type="Spatial" parent="."]
+
+[node name="Floor" type="MeshInstance" parent="3D_background"]
+transform = Transform( 200, 0, 0, 0, 4, 0, 0, 0, 200, 0, -1.7, 0 )
+mesh = SubResource( 6 )
+material/0 = ExtResource( 4 )
+script = SubResource( 7 )
+
+[node name="HolographicServer" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="aim_point" type="Sprite" parent="."]
+position = Vector2( 640, 382 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 6 )

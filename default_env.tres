@@ -1,0 +1,36 @@
+[gd_resource type="Environment" load_steps=3 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.0375977, 0.322787, 0.6875, 1 )
+sky_horizon_color = Color( 0.262024, 0.533321, 0.621094, 1 )
+sky_curve = 0.25
+ground_bottom_color = Color( 0.101961, 0.145098, 0.188235, 1 )
+ground_horizon_color = Color( 0.482353, 0.788235, 0.952941, 1 )
+ground_curve = 0.01
+sun_energy = 16.0
+
+[sub_resource type="GDScript" id=2]
+script/source = "tool
+extends Object
+func e():
+	return 0
+"
+
+[resource]
+background_mode = 3
+background_sky = SubResource( 1 )
+background_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.28
+ambient_light_sky_contribution = 0.0
+fog_color = Color( 1, 1, 1, 1 )
+fog_depth_begin = 397.1
+fog_depth_end = 150.5
+ssao_enabled = true
+ssao_blur = 1
+dof_blur_far_enabled = true
+dof_blur_far_distance = 14.1
+dof_blur_far_transition = 34.29
+dof_blur_far_amount = 0.09
+dof_blur_far_quality = 2
+script = SubResource( 2 )
