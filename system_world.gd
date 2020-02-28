@@ -19,8 +19,8 @@ func _input(event):
 			break
   
 	# If it is, then pass the event to the viewport
-	if (is_mouse_event == false):
-		viewport.input(event)
+	##if (is_mouse_event == false):
+	##	viewport.input(event)
 
 
 # Mouse events for Area
@@ -64,11 +64,11 @@ func _on_area_input_event(camera, event, click_pos, click_normal, shape_idx):
 	prev_pos = pos
 	
 	# Send the event to the viewport
-	viewport.input(event)
+	##viewport.input(event)
 
 
 func _ready():
 	viewport = get_node("Viewport")
-	get_node("Area").connect("input_event", self, "_on_area_input_event")
+	##get_node("Area").connect("input_event", self, "_on_area_input_event")
 	var projectResolution=Vector2(ProjectSettings.get("display/window/size/width"),ProjectSettings.get("display/window/size/height"))
 	get_node("aim_point").global_position = Vector2(projectResolution.x / 2, projectResolution.y / 2)
