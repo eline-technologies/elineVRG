@@ -1,14 +1,16 @@
 extends RayCast
 
+onready var systemWorld = get_parent().get_parent()
 var ray = null
 var viewport = null
 var prev_pos = null
 var last_click_pos = null
 
 func _ready():
-	ray = self
-	viewport = get_parent().get_parent().get_node("Viewport")
-	##set_process_input(true)
+	if (not systemWorld.dreamsCodeMode):
+		ray = self
+		viewport = systemWorld.get_node("Viewport")
+		set_process_input(true)
 
 func _input(event):
 	##
