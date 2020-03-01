@@ -83,3 +83,4 @@ func _ready():
 		get_node("aim_point").global_position = Vector2(projectResolution.x / 2, projectResolution.y / 2)
 	else:
 		OS.set_window_title("DreamsCode")
+		get_node("aim_point").visible = false
