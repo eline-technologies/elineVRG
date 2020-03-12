@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://system_world.gd" type="Script" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://EventNodeSelected.tres" type="StyleBox" id=8]
 [ext_resource path="res://OptionParamVisibility.gd" type="Script" id=9]
 [ext_resource path="res://OptionParamType.gd" type="Script" id=10]
+[ext_resource path="res://EventNode.gd" type="Script" id=11]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -84,7 +85,7 @@ slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
