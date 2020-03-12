@@ -8,7 +8,7 @@ var viewport = null
 
 var holographicTcpServer = null
 
-var dreamsCodeMode = false
+var dreamsCodeMode = true
 
 func _input(event):
 	if (not dreamsCodeMode):

@@ -84,6 +84,7 @@ slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -129,7 +130,7 @@ margin_bottom = 38.0
 columns = 2
 
 [node name="Label2" type="Label" parent="GUI/GraphEdit/GenericNode/GridContainer"]
-margin_right = 55.0
+margin_right = 94.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Previous"
@@ -279,3 +280,4 @@ script = ExtResource( 5 )
 position = Vector2( 640, 382 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 6 )
+[connection signal="connection_request" from="GUI/GraphEdit" to="GUI/GraphEdit/EventNode" method="_on_GraphEdit_connection_request"]
