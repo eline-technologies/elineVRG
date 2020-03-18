@@ -7,6 +7,9 @@ var prev_pos = null
 var last_click_pos = null
 
 func _ready():
+	toggleVRMode()
+
+func toggleVRMode():
 	if (not systemWorld.dreamsCodeMode):
 		ray = self
 		viewport = systemWorld.get_node("Viewport")

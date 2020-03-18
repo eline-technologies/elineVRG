@@ -71,6 +71,14 @@ func _on_area_input_event(camera, event, click_pos, click_normal, shape_idx):
 
 
 func _ready():
+	var args = OS.get_cmdline_args()
+	if (args.size() > 0 and args[0] == "-vrgmode"):
+		self.dreamsCodeMode = false
+		var camera = get_node("Camera")
+		camera.toggleVRMode()
+		var raycast = camera.get_child(0)
+		raycast.toggleVRMode()
+	
 	if (not dreamsCodeMode):
 		OS.set_window_size(Vector2(1920, 1080))
 		OS.window_fullscreen = true

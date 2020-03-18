@@ -6,7 +6,9 @@ onready var SystemWorld = get_parent()
 const CAMERA_TURN_SPEED = 700
 
 func _ready():
-	## Tell Godot that we want to handle input
+	toggleVRMode()
+
+func toggleVRMode():
 	if (not SystemWorld.dreamsCodeMode):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		set_process_unhandled_input(true)
