@@ -1,0 +1,5 @@
+AppName=Hello World in DreamsScript
+Identifier=com.elineos.helloworlddreamsscript
+Version=1.0.0
+Icon=icon.png
+Exec=dreamsrt

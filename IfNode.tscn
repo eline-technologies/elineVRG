@@ -1,21 +1,21 @@
 [gd_scene format=2]
 
-[node name="GetNode" type="GraphNode"]
+[node name="IfNode" type="GraphNode"]
 focus_mode = 2
 mouse_filter = 1
-title = "Get Parameter"
+title = "If"
 slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color( 1, 1, 1, 1 )
 slot/0/right_enabled = true
 slot/0/right_type = 0
 slot/0/right_color = Color( 1, 1, 1, 1 )
-slot/1/left_enabled = false
+slot/1/left_enabled = true
 slot/1/left_type = 0
-slot/1/left_color = Color( 1, 1, 1, 1 )
+slot/1/left_color = Color( 0.890196, 0.129412, 0.129412, 1 )
 slot/1/right_enabled = true
 slot/1/right_type = 0
-slot/1/right_color = Color( 0, 0.439216, 1, 1 )
+slot/1/right_color = Color( 1, 1, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -23,25 +23,38 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 109.0
+margin_right = 103.0
 margin_bottom = 38.0
 columns = 2
 
 [node name="Label2" type="Label" parent="GridContainer"]
-margin_right = 59.0
+margin_right = 55.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Previous"
 
 [node name="Label" type="Label" parent="GridContainer"]
-margin_left = 63.0
-margin_right = 93.0
+margin_left = 59.0
+margin_right = 87.0
 margin_bottom = 14.0
-text = "Next"
+text = "True"
 align = 2
 
-[node name="LineEdit" type="OptionButton" parent="."]
+[node name="GridContainer2" type="GridContainer" parent="."]
 margin_left = 16.0
 margin_top = 39.0
-margin_right = 109.0
-margin_bottom = 59.0
+margin_right = 103.0
+margin_bottom = 53.0
+columns = 2
+
+[node name="Label2" type="Label" parent="GridContainer2"]
+margin_right = 50.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="GridContainer2"]
+margin_left = 54.0
+margin_right = 87.0
+margin_bottom = 14.0
+text = "False"
+align = 2
