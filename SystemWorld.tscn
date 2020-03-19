@@ -66,6 +66,19 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="ScriptTitle" type="Label" parent="GUI/GraphEdit"]
+anchor_right = 0.993
+margin_right = -0.215454
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "HelloWorldDreamsScript - Main"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Panel" type="Panel" parent="GUI"]
 anchor_right = 0.24375
 anchor_bottom = 1.0

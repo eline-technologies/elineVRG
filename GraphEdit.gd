@@ -1,26 +1,31 @@
 extends GraphEdit
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 onready var paramItem = preload("res://ScriptParamItem.tscn")
 onready var eventNode = preload("res://EventNode.tscn")
 onready var getNode = preload("res://GetNode.tscn")
 onready var ifNode = preload("res://IfNode.tscn")
 onready var printTextNode = preload("res://PrintTextNode.tscn")
+onready var scriptTitle = self.find_node("ScriptTitle")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	loadAppScript("res://HelloWorldDreamsScript.vApp")
+
+func loadAppScript(appPath):
 	var file = File.new()
-	file.open("res://HelloWorldDreamsScript.vApp/Scripts/main.dreamsscript", File.READ)
+	file.open(appPath + "/Scripts/main.dreamsscript", File.READ)
 	var content = file.get_as_text()
 	var script = JSON.parse(content).result
 	file.close()
+	scriptTitle.text = getAppName(appPath) + " - " + script.name
 	loadScriptParams(script.params)
 	for i in script.methods.size():
 		if script.methods[i].name == "#_init":
 			loadDreamScriptMethod(script.methods[i])
+
+func getAppName(appPath):
+	var tmp = appPath.split('/')
+	return tmp[tmp.size()-1]
 
 func loadDreamScriptMethod(scriptMethod):
 	var beginNode = eventNode.instance()
