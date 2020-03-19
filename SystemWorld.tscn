@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://system_world.gd" type="Script" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://GraphEdit.gd" type="Script" id=7]
 [ext_resource path="res://iconfinder_ic_save_48px_352084.png" type="Texture" id=8]
 [ext_resource path="res://iconfinder_ic_folder_open_48px_352375.png" type="Texture" id=9]
+[ext_resource path="res://AddParamButton.gd" type="Script" id=10]
 
 [sub_resource type="PlaneMesh" id=1]
 
@@ -94,10 +95,11 @@ margin_bottom = 351.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="GUI/Panel/VBoxContainer/ParamsList"]
+[node name="AddParamButton" type="Button" parent="GUI/Panel/VBoxContainer/ParamsList"]
 margin_right = 297.0
 margin_bottom = 20.0
 text = "Add new parameter"
+script = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="GUI/Panel/VBoxContainer"]
 margin_top = 355.0
@@ -190,3 +192,4 @@ script = ExtResource( 5 )
 position = Vector2( 640, 382 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 6 )
+[connection signal="pressed" from="GUI/Panel/VBoxContainer/ParamsList/AddParamButton" to="GUI/Panel/VBoxContainer/ParamsList/AddParamButton" method="_on_AddParamButton_pressed"]

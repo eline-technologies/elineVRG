@@ -80,6 +80,12 @@ func _ready():
 		raycast.toggleVRMode()
 	
 	if (not dreamsCodeMode):
+		var interface = ARVRServer.find_interface("OVRMobile")
+		if interface and interface.initialize():
+			# Tell our viewport it is the arvr viewport:
+			get_viewport().arvr = true
+			# change our physics fps
+			Engine.target_fps = 72
 		OS.set_window_size(Vector2(1920, 1080))
 		OS.window_fullscreen = true
 		viewport = get_node("Viewport")

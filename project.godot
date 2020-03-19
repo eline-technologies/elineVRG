@@ -30,7 +30,7 @@ window/dpi/allow_hidpi=true
 
 [gdnative]
 
-singletons=[  ]
+singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib", "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
 
 [rendering]
 
