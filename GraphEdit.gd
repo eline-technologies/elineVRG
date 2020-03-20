@@ -21,7 +21,7 @@ func loadAppScript(appPath):
 	loadScriptParams(script.params)
 	for i in script.methods.size():
 		if script.methods[i].name == "#_init":
-			loadDreamScriptMethod(script.methods[i])
+			loadDreamScriptMethod(script.methods[i], script.params)
 
 func getAppName(appPath):
 	var tmp = appPath.split('/')
@@ -37,19 +37,21 @@ func loadScriptParams(scriptParams):
 		paramList.add_child(newParamItem)
 		paramList.move_child(addParamBtn, paramList.get_child_count()-1)
 
-func loadDreamScriptMethod(scriptMethod):
+func loadDreamScriptMethod(scriptMethod, scriptParams):
 	var beginNode = eventNode.instance()
 	beginNode.title = "OnBegin"
 	beginNode.offset = Vector2(scriptMethod.x,scriptMethod.y)
 	self.add_child(beginNode)
-	loadMethodNodes(scriptMethod)
+	loadMethodNodes(scriptMethod, scriptParams)
 
-func loadMethodNodes(scriptMethod):
+func loadMethodNodes(scriptMethod, scriptParams):
 	for i in scriptMethod.nodes.size():
 		var node = scriptMethod.nodes[i]
 		var newNode
 		if node.node_type == "Get":
 			newNode = getNode.instance()
+			newNode.scriptParams = scriptParams
+			newNode.selectedParam = node.param_name
 		elif node.node_type == "If":
 			newNode = ifNode.instance()
 		elif node.node_type == "PrintText":
