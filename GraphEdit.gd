@@ -7,6 +7,8 @@ onready var ifNode = preload("res://IfNode.tscn")
 onready var printTextNode = preload("res://PrintTextNode.tscn")
 onready var scriptTitle = self.find_node("ScriptTitle")
 
+var appScript
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	loadAppScript("res://HelloWorldDreamsScript.vApp")
@@ -15,13 +17,13 @@ func loadAppScript(appPath):
 	var file = File.new()
 	file.open(appPath + "/Scripts/main.dreamsscript", File.READ)
 	var content = file.get_as_text()
-	var script = JSON.parse(content).result
+	appScript = JSON.parse(content).result
 	file.close()
-	scriptTitle.text = getAppName(appPath) + " - " + script.name
-	loadScriptParams(script.params)
-	for i in script.methods.size():
-		if script.methods[i].name == "#_init":
-			loadDreamScriptMethod(script.methods[i], script.params)
+	scriptTitle.text = getAppName(appPath) + " - " + appScript.name
+	loadScriptParams(appScript.params)
+	for i in appScript.methods.size():
+		if appScript.methods[i].name == "#_init":
+			loadDreamScriptMethod(appScript.methods[i], appScript.params)
 
 func getAppName(appPath):
 	var tmp = appPath.split('/')
@@ -50,8 +52,8 @@ func loadMethodNodes(scriptMethod, scriptParams):
 		var newNode
 		if node.node_type == "Get":
 			newNode = getNode.instance()
-			newNode.scriptParams = scriptParams
 			newNode.selectedParam = node.param_name
+			newNode.selectParams = scriptParams
 		elif node.node_type == "If":
 			newNode = ifNode.instance()
 		elif node.node_type == "PrintText":
@@ -59,3 +61,28 @@ func loadMethodNodes(scriptMethod, scriptParams):
 		newNode.offset = Vector2(node.x, node.y)
 		self.add_child(newNode)
 
+func addNewParam(name, type, scope, value):
+	var newParam = {
+		"name": name,
+		"scope": scope,
+		"type": type,
+		"value": value
+	}
+	appScript.params.append(newParam)
+	var children = self.get_children()
+	for i in children.size():
+		var child = children[i]
+		if child is preload("GetNode.gd"):
+			child.refreshParamList(appScript.params)
+
+func removeParam(param):
+	var index = 0
+	for idx in appScript.params.size():
+		if appScript.params[idx].name == param.name:
+			index = idx
+	appScript.params.remove(index)
+	var children = self.get_children()
+	for i in children.size():
+		var child = children[i]
+		if child is preload("GetNode.gd"):
+			child.refreshParamList(appScript.params)

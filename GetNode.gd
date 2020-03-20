@@ -1,12 +1,17 @@
 extends GraphNode
 
 onready var paramSelect = $ParamSelect
+var selectParams
 var selectedParam
-var scriptParams
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	refreshParamList(selectParams)
+
+func refreshParamList(scriptParams):
+	scriptParams = scriptParams
+	paramSelect.clear()
 	for i in scriptParams.size():
 		paramSelect.add_item(scriptParams[i].name)
 	selectParam(selectedParam)

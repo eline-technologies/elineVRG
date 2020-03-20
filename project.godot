@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="élineVRG"
 run/main_scene="res://SystemWorld.tscn"
+run/low_processor_mode=true
 boot_splash/image="res://0001-2022728899.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 1, 1, 1, 1 )

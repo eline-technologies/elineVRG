@@ -3,8 +3,27 @@
 [ext_resource path="res://OptionParamVisibility.gd" type="Script" id=1]
 [ext_resource path="res://OptionParamType.gd" type="Script" id=2]
 [ext_resource path="res://iconfinder_ic_delete_34px_352303.png" type="Texture" id=3]
-[ext_resource path="res://DeleteParamButton.gd" type="Script" id=4]
 [ext_resource path="res://ScriptParamItem.gd" type="Script" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+"
 
 [node name="ScriptParamItem" type="HBoxContainer"]
 margin_right = 297.0
@@ -19,7 +38,7 @@ margin_right = 32.0
 margin_bottom = 26.0
 rect_clip_content = true
 icon = ExtResource( 3 )
-script = ExtResource( 4 )
+script = SubResource( 1 )
 
 [node name="ScopeSelect" type="OptionButton" parent="."]
 margin_left = 36.0
@@ -44,5 +63,5 @@ text = "newVar"
 margin_left = 273.0
 margin_right = 297.0
 margin_bottom = 26.0
-[connection signal="pressed" from="DeleteParamButton" to="DeleteParamButton" method="_on_Button_pressed"]
+[connection signal="pressed" from="DeleteParamButton" to="." method="_on_DeleteParamButton_pressed"]
 [connection signal="item_selected" from="TypeSelect" to="TypeSelect" method="_on_TypeSelect_item_selected"]
