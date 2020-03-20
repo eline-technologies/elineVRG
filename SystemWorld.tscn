@@ -72,7 +72,7 @@ margin_right = -0.215454
 margin_bottom = 53.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "HelloWorldDreamsScript - Main"
+text = "Title"
 align = 1
 valign = 1
 __meta__ = {
@@ -92,48 +92,50 @@ anchor_top = 0.00972222
 anchor_right = 0.97638
 anchor_bottom = 0.990278
 margin_top = -4.76837e-07
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="ScriptParametersLabel" type="Label" parent="GUI/Panel/VBoxContainer"]
-margin_right = 297.0
+margin_right = 337.0
 margin_bottom = 14.0
 text = "Script Parameters"
 
 [node name="ParamsList" type="VBoxContainer" parent="GUI/Panel/VBoxContainer"]
 margin_top = 18.0
-margin_right = 297.0
-margin_bottom = 351.0
+margin_right = 337.0
+margin_bottom = 378.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="AddParamButton" type="Button" parent="GUI/Panel/VBoxContainer/ParamsList"]
-margin_right = 297.0
+margin_right = 337.0
 margin_bottom = 20.0
 text = "Add new parameter"
 script = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="GUI/Panel/VBoxContainer"]
-margin_top = 355.0
-margin_right = 297.0
-margin_bottom = 369.0
+margin_top = 382.0
+margin_right = 337.0
+margin_bottom = 396.0
 text = "Node palette"
 
 [node name="ItemList" type="ItemList" parent="GUI/Panel/VBoxContainer"]
-margin_top = 373.0
-margin_right = 297.0
-margin_bottom = 706.0
+margin_top = 400.0
+margin_right = 337.0
+margin_bottom = 760.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="GUI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -165.871
-margin_top = 15.0
-margin_right = -119.871
-margin_bottom = 64.0
+margin_left = -123.041
+margin_top = 16.432
+margin_right = -84.0405
+margin_bottom = 55.432
 icon = ExtResource( 8 )
 expand_icon = true
 __meta__ = {
@@ -143,10 +145,10 @@ __meta__ = {
 [node name="Button2" type="Button" parent="GUI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -101.432
-margin_top = 15.0
-margin_right = -55.4316
-margin_bottom = 64.0
+margin_left = -65.2007
+margin_top = 16.432
+margin_right = -28.2007
+margin_bottom = 56.432
 icon = ExtResource( 9 )
 expand_icon = true
 __meta__ = {

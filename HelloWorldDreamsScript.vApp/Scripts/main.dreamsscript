@@ -22,7 +22,7 @@
       "name": "#_init",
       "nodes": [
         {
-          "x": 200,
+          "x": 160,
           "y": 300,
           "uid": "75a6ffb0-839d-4ee0-bbff-29539bc8f671",
           "node_type": "Get",
@@ -37,7 +37,7 @@
           ]
         },
         {
-          "x": 400,
+          "x": 360,
           "y": 300,
           "uid": "9ed21f95-424a-4c0d-8cdb-4b60abcd864c",
           "node_type": "If",
@@ -53,7 +53,7 @@
           ]
         },
         {
-          "x": 600,
+          "x": 560,
           "y": 300,
           "uid": "bdc524f2-40ff-4f4f-92e5-84aa3ee52743",
           "node_type": "Get",
@@ -70,7 +70,7 @@
           ]
         },
         {
-          "x": 800,
+          "x": 760,
           "y": 300,
           "uid": "6a9d53a4-4268-4ee5-b719-0ec321c2cf1a",
           "node_type": "PrintText",

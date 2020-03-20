@@ -27,6 +27,16 @@ func getAppName(appPath):
 	var tmp = appPath.split('/')
 	return tmp[tmp.size()-1]
 
+func loadScriptParams(scriptParams):
+	var paramList = get_tree().get_root().find_node("ParamsList", true, false)
+	var addParamBtn = get_tree().get_root().find_node("AddParamButton", true, false)
+	for i in scriptParams.size():
+		var param = scriptParams[i]
+		var newParamItem = paramItem.instance()
+		newParamItem.loadParam(param)
+		paramList.add_child(newParamItem)
+		paramList.move_child(addParamBtn, paramList.get_child_count()-1)
+
 func loadDreamScriptMethod(scriptMethod):
 	var beginNode = eventNode.instance()
 	beginNode.title = "OnBegin"
@@ -47,15 +57,3 @@ func loadMethodNodes(scriptMethod):
 		newNode.offset = Vector2(node.x, node.y)
 		self.add_child(newNode)
 
-func loadScriptParams(scriptParams):
-	var paramList = get_tree().get_root().find_node("ParamsList", true, false)
-	var addParamBtn = get_tree().get_root().find_node("AddParamButton", true, false)
-	for i in scriptParams.size():
-		var param = scriptParams[i]
-		var newParamItem = paramItem.instance()
-		paramList.add_child(newParamItem)
-		paramList.move_child(addParamBtn, paramList.get_child_count()-1)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
