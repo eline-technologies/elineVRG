@@ -14,16 +14,18 @@ func _ready():
 	loadAppScript("res://HelloWorldDreamsScript.vApp")
 
 func loadAppScript(appPath):
+	var filename = appPath + "/Scripts/main.dreamsscript"
 	var file = File.new()
-	file.open(appPath + "/Scripts/main.dreamsscript", File.READ)
-	var content = file.get_as_text()
-	appScript = JSON.parse(content).result
-	file.close()
-	scriptTitle.text = getAppName(appPath) + " - " + appScript.name
-	loadScriptParams(appScript.params)
-	for i in appScript.methods.size():
-		if appScript.methods[i].name == "#_init":
-			loadDreamScriptMethod(appScript.methods[i], appScript.params)
+	if file.file_exists(filename):
+		file.open(filename, File.READ)
+		var content = file.get_as_text()
+		appScript = JSON.parse(content).result
+		file.close()
+		scriptTitle.text = getAppName(appPath) + " - " + appScript.name
+		loadScriptParams(appScript.params)
+		for i in appScript.methods.size():
+			if appScript.methods[i].name == "#_init":
+				loadDreamScriptMethod(appScript.methods[i], appScript.params)
 
 func getAppName(appPath):
 	var tmp = appPath.split('/')
