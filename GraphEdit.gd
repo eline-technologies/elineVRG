@@ -88,3 +88,19 @@ func removeParam(param):
 		var child = children[i]
 		if child is preload("GetNode.gd"):
 			child.refreshParamList(appScript.params)
+
+#func editParam(param):
+#	var index = 0
+#	for idx in appScript.params.size():
+#		if appScript.params[idx].name == param.name:
+#
+
+func _on_GraphEdit_connection_request(from, from_slot, to, to_slot):
+	if from_slot == 0 and to_slot == 0:
+		self.connect_node(from, from_slot, to, to_slot)
+	elif from_slot != 0 and to_slot != 0:
+		self.connect_node(from, from_slot, to, to_slot)
+
+
+func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot):
+	self.disconnect_node(from, from_slot, to, to_slot)

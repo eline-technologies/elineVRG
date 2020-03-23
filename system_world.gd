@@ -4,7 +4,6 @@ extends Spatial
 # Member variables
 var prev_pos = null
 var last_click_pos = null
-var viewport = null
 
 var holographicTcpServer = null
 
@@ -34,10 +33,6 @@ func _ready():
 		# if you want dynamic foveation make sure to set the maximum desired foveation with the previous function
 		# before you enable dynamic foveation
 		ovrPerformance.set_enable_dynamic_foveation(true);
-
-		viewport = get_node("Viewport")
-		var gui = get_node("GUI")
-		self.remove_child(gui)
-		viewport.add_child(gui, true)
 	else:
+		get_tree().change_scene("res://GUI.tscn")
 		OS.set_window_title("DreamsCode")
