@@ -1,11 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://system_world.gd" type="Script" id=1]
-[ext_resource path="res://Camera.gd" type="Script" id=2]
-[ext_resource path="res://GuiRayCast.gd" type="Script" id=3]
 [ext_resource path="res://floor_grid.tres" type="Material" id=4]
 [ext_resource path="res://HolographicServer.gd" type="Script" id=5]
-[ext_resource path="res://aim_point.png" type="Texture" id=6]
 [ext_resource path="res://GraphEdit.gd" type="Script" id=7]
 [ext_resource path="res://iconfinder_ic_save_48px_352084.png" type="Texture" id=8]
 [ext_resource path="res://iconfinder_ic_folder_open_48px_352375.png" type="Texture" id=9]
@@ -37,13 +34,6 @@ script = SubResource( 4 )
 
 [sub_resource type="PlaneMesh" id=6]
 
-[sub_resource type="GDScript" id=7]
-script/source = "tool
-extends Object
-func e():
-	return 0
-"
-
 [node name="SystemWorld" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -61,7 +51,6 @@ __meta__ = {
 anchor_left = 0.282669
 anchor_right = 1.00069
 anchor_bottom = 1.0
-scroll_offset = Vector2( -56.7218, -2 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -158,13 +147,15 @@ __meta__ = {
 
 [node name="Viewport" type="Viewport" parent="."]
 arvr = true
-size = Vector2( 1280, 720 )
+size = Vector2( 1024, 1024 )
+own_world = true
 transparent_bg = true
-msaa = 4
+hdr = false
+usage = 3
 render_target_v_flip = true
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 1.33898, 0, 0, 0, 0.818265, 0, 0, 0, 1, 0.0336859, -0.0225139, 0.763296 )
+transform = Transform( 2.908, 0, 0, 0, 1.552, 0, 0, 0, 1, 0, 0, 0 )
 input_capture_on_drag = true
 
 [node name="Quad" type="MeshInstance" parent="Area"]
@@ -174,18 +165,6 @@ material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 5 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.65 )
-fov = 65.0
-near = 0.1
-script = ExtResource( 2 )
-
-[node name="RayCast" type="RayCast" parent="Camera"]
-enabled = true
-cast_to = Vector3( 0, 0, -5 )
-collide_with_areas = true
-script = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38866, 3.10891, 2.72141 )
@@ -199,13 +178,17 @@ omni_shadow_mode = 0
 transform = Transform( 200, 0, 0, 0, 4, 0, 0, 0, 200, 0, -1.7, 0 )
 mesh = SubResource( 6 )
 material/0 = ExtResource( 4 )
-script = SubResource( 7 )
 
 [node name="HolographicServer" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="aim_point" type="Sprite" parent="."]
-position = Vector2( 640, 382 )
-scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 6 )
+[node name="ARVROrigin" type="ARVROrigin" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.65 )
+
+[node name="ARVRController" type="ARVRController" parent="ARVROrigin"]
+controller_id = 2
+
+[node name="Camera" type="ARVRCamera" parent="ARVROrigin"]
+fov = 65.0
+near = 0.1
 [connection signal="pressed" from="GUI/Panel/VBoxContainer/ParamsList/AddParamButton" to="GUI/Panel/VBoxContainer/ParamsList/AddParamButton" method="_on_AddParamButton_pressed"]

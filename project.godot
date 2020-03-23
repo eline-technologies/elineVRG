@@ -29,10 +29,6 @@ window/size/width=1454
 window/size/height=776
 window/dpi/allow_hidpi=true
 
-[editor]
-
-main_run_args="-vrgmode"
-
 [gdnative]
 
 singletons=[ "res://addons/godot-openvr/godot_openvr.gdnlib", "res://addons/godot_ovrmobile/godot_ovrmobile.gdnlib" ]
