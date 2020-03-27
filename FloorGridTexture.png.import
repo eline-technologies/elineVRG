@@ -4,15 +4,16 @@ importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.s3tc.stex"
 path.etc2="res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.etc2.stex"
+path.etc="res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://FloorGridTexture.png"
-dest_files=[ "res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.s3tc.stex", "res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.etc2.stex" ]
+dest_files=[ "res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.s3tc.stex", "res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.etc2.stex", "res://.import/FloorGridTexture.png-e2ac9fbd00e7ac1bd0cee04e7f4f88d6.etc.stex" ]
 
 [params]
 
